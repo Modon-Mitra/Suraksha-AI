@@ -1,0 +1,18 @@
+<!--
+    Splash screen layout — uses SplashView (pure Canvas animation) instead of
+    a VideoView.  The dark background colour is set here so there is zero flash
+    before the first onDraw call.
+-->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splash_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <com.suraksha.ai.ui.SplashView
+        android:id="@+id/splash_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Suraksha AI</string>
+    <string name="tagline">AI Powered Personal Safety</string>
+    <string name="tagline2">Stay Safe. Stay Smart.</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_tracking">Tracking</string>
+    <string name="nav_friends">Friends</string>
+    <string name="nav_settings">Settings</string>
+    <string name="status_safe">SAFE</string>
+    <string name="status_alert">ALERT</string>
+    <string name="status_danger">DANGER!</string>
+    <string name="status_sos">SOS ACTIVE</string>
+    <string name="bpm">BPM</string>
+    <string name="heart_rate">Heart Rate</string>
+    <string name="blood_pressure">Blood Pressure</string>
+    <string name="bp_unit">mmHg</string>
+    <string name="sos">SOS</string>
+    <string name="cancel">CANCEL</string>
+    <string name="stop_sos">STOP SOS</string>
+    <string name="are_you_safe">Are you safe?</string>
+    <string name="sos_activated">SOS ACTIVATED</string>
+    <string name="help_on_way">Help is on the way!</string>
+    <string name="location_sent">Location Sent</string>
+    <string name="live_tracking">Live Tracking</string>
+    <string name="recording">Recording</string>
+    <string name="tap_cancel">Tap CANCEL if you\'re OK</string>
+    <string name="danger_detected">DANGER!</string>
+    <string name="possible_threat">Possible Threat Detected</string>
+    <string name="monitoring">Monitoring…</string>
+    <string name="connected">Connected</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="name_hint">Contact Name</string>
+    <string name="phone_hint">Phone Number</string>
+    <string name="done">Done</string>
+    <string name="welcome">Welcome to Suraksha AI</string>
+    <string name="onboarding_subtitle">Add emergency contacts who will be alerted when you need help.</string>
+    <string name="ai_protection">AI Protection</string>
+    <string name="realtime_tracking">Real-time Tracking</string>
+    <string name="emergency_sos">Emergency SOS</string>
+    <string name="because_safety">Because your safety matters.</string>
+</resources>

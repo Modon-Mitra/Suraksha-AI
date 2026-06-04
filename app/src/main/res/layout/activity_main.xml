@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
+
+    <View
+        android:id="@+id/scrim_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3000000"
+        android:alpha="0"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <LinearLayout
+        android:id="@+id/nav_panel"
+        android:layout_width="220dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/bg_card"
+        android:translationX="-220dp"
+        android:elevation="16dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="32dp">
+
+        <LinearLayout
+            android:id="@+id/panel_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="32dp">
+
+            <ImageView
+                android:id="@+id/panel_shield_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_shield" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SURAKSHA"
+                    android:textColor="@color/brand_blue"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AI"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="16dp"
+            android:background="#33FFFFFF" />
+
+        <LinearLayout
+            android:id="@+id/nav_item_home"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/nav_icon_home"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_home" />
+
+            <TextView
+                android:id="@+id/nav_label_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="Home"
+                android:textColor="@color/brand_blue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_item_tracking"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/nav_icon_tracking"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_tracking" />
+
+            <TextView
+                android:id="@+id/nav_label_tracking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="Locations"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_item_friends"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/nav_icon_friends"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_friends" />
+
+            <TextView
+                android:id="@+id/nav_label_friends"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="Contacts"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_item_settings"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/nav_icon_settings"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_settings" />
+
+            <TextView
+                android:id="@+id/nav_label_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="Settings"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/global_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:background="@color/bg_dark"
+        android:elevation="8dp">
+
+        <ImageView
+            android:id="@+id/floating_shield_btn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_shield"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+</FrameLayout>

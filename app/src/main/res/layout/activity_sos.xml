@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <!-- ═══════════════════════════════════════════
+         PHASE 1 – Countdown
+    ═══════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/layout_countdown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:background="#CC050D1A"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Warning triangle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚠"
+            android:textColor="@color/danger_red"
+            android:textSize="64sp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DANGER!"
+            android:textColor="@color/danger_red"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"
+            android:text="Possible Threat Detected"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp"/>
+
+        <!-- "Are you safe?" prompt -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Are you safe?"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Tap CANCEL if you're OK"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"/>
+
+                <!-- Countdown number -->
+                <TextView
+                    android:id="@+id/tv_countdown"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_countdown_circle"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textColor="@color/danger_red"
+                    android:textSize="40sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Cancel button -->
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="200dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_cancel_button"
+            android:text="CANCEL"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.15"/>
+
+    </LinearLayout>
+
+    <!-- ═══════════════════════════════════════════
+         PHASE 2 – SOS Activated
+    ═══════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/layout_activated"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp"
+        android:background="#CC050D1A"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- SOS header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_sos_header"
+            android:padding="16dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🆘  "
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SOS ACTIVATED"
+                android:textColor="@color/danger_red"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Help is on the way!"
+            android:textColor="@color/text_secondary"
+            android:textSize="16sp"/>
+
+        <!-- Status checklist card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Location sent -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="14dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="✓" android:textColor="@color/safe_green" android:textSize="18sp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Location Sent" android:textColor="@color/text_primary" android:textSize="15sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="To 3 Contacts" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Live Tracking -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="14dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="✓" android:textColor="@color/safe_green" android:textSize="18sp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Live Tracking" android:textColor="@color/text_primary" android:textSize="15sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Shareable Link Ready" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Recording -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="✓" android:textColor="@color/safe_green" android:textSize="18sp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Recording" android:textColor="@color/text_primary" android:textSize="15sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Audio &amp; Video…" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:background="@drawable/bg_live_badge"
+                        android:paddingStart="8dp" android:paddingEnd="8dp"
+                        android:paddingTop="3dp" android:paddingBottom="3dp"
+                        android:text="LIVE" android:textColor="@color/danger_red" android:textSize="10sp" android:textStyle="bold"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- STOP SOS button -->
+        <Button
+            android:id="@+id/btn_stop_sos"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_stop_sos"
+            android:text="STOP SOS"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <!-- ======================================================= -->
+    <!-- HEADER                                                  -->
+    <!-- ======================================================= -->
+    <LinearLayout
+        android:id="@+id/chatHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:background="@color/chat_header_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Back arrow -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            android:tint="@color/brand_blue"
+            android:contentDescription="Back" />
+
+        <!-- Shield icon + title -->
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_shield"
+            android:tint="@color/brand_blue"
+            android:contentDescription="Suraksha" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Suraksha Agents"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="@color/text_primary" />
+
+        <!-- Agent count badge — right-aligned via layout_weight on title -->
+        <TextView
+            android:id="@+id/tvAgentStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="9 agents ready"
+            android:textSize="11sp"
+            android:textColor="@color/safe_green"
+            android:background="@color/safe_green_dim" />
+
+    </LinearLayout>
+
+    <!-- ======================================================= -->
+    <!-- MESSAGES LIST                                           -->
+    <!-- ======================================================= -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="12dp"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/chatHeader"
+        app:layout_constraintBottom_toTopOf="@id/rvAgents"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ======================================================= -->
+    <!-- ACTIVE AGENT CHIPS STRIP                               -->
+    <!-- ======================================================= -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAgents"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@color/bg_card"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/tvTypingStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ======================================================= -->
+    <!-- TYPING / LISTENING STATUS                               -->
+    <!-- ======================================================= -->
+    <TextView
+        android:id="@+id/tvTypingStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="4dp"
+        android:text=""
+        android:textSize="12sp"
+        android:textColor="@color/brand_blue"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/inputCard"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ======================================================= -->
+    <!-- INPUT CARD                                              -->
+    <!-- ======================================================= -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/inputCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="28dp"
+        app:cardBackgroundColor="@color/chat_input_bg"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/chat_border"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
+
+            <!-- Mic / voice input -->
+            <ImageButton
+                android:id="@+id/btnVoiceInput"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_voice"
+                android:tint="@color/brand_blue"
+                android:contentDescription="Voice input" />
+
+            <!-- Text input -->
+            <EditText
+                android:id="@+id/etMessage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Ask Suraksha..."
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/chat_hint"
+                android:textSize="14sp"
+                android:background="@android:color/transparent"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:maxLines="4"
+                android:inputType="textMultiLine|textCapSentences"
+                android:imeOptions="actionSend" />
+
+            <!-- Send button -->
+            <ImageButton
+                android:id="@+id/btnSend"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_enter"
+                android:tint="@color/brand_blue"
+                android:contentDescription="Send" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ======================================================= -->
+    <!-- SOS FLOATING BUTTON — bottom-end, above input card     -->
+    <!-- ======================================================= -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSOS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="SOS"
+        android:src="@drawable/ic_shield"
+        app:backgroundTint="@color/danger_red"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/inputCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvMessages"
+        app:tint="@android:color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

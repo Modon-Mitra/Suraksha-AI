@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ring_size">220dp</dimen>
+    <dimen name="sos_button_size">80dp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    <dimen name="hr_text_size">56sp</dimen>
+    <dimen name="status_text_size">22sp</dimen>
+    <dimen name="label_text_size">12sp</dimen>
+</resources>

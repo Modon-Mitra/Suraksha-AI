@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.suraksha.ai">
+
+    <!-- ========================================= -->
+    <!-- PERMISSIONS                               -->
+    <!-- ========================================= -->
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.BODY_SENSORS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+
+    <!-- ========================================= -->
+    <!-- BLUETOOTH (BLE heart rate)               -->
+    <!-- ========================================= -->
+
+    <!-- Android 11 and below -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30"/>
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30"/>
+
+    <!-- Android 12+ -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s"/>
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_CONNECT"
+        tools:targetApi="s"/>
+
+    <!-- ========================================= -->
+    <!-- HARDWARE FEATURES                         -->
+    <!-- ========================================= -->
+
+    <!-- Fixes lint warning for SEND_SMS + CALL_PHONE permissions -->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false"/>
+
+    <uses-feature
+        android:name="android.hardware.sensor.heartrate"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false"/>
+
+    <!-- ========================================= -->
+    <!-- APPLICATION                               -->
+    <!-- ========================================= -->
+
+    <application
+        android:name=".SurakshaApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Suraksha">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD979ekt1ceDf2HIg9k39JkGx12bKPWZ90"/>
+
+        <!-- ========================================= -->
+        <!-- SPLASH                                    -->
+        <!-- ========================================= -->
+
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Suraksha.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- ========================================= -->
+        <!-- MAIN                                      -->
+        <!-- ========================================= -->
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- ========================================= -->
+        <!-- ONBOARDING                                -->
+        <!-- ========================================= -->
+
+        <activity
+            android:name=".ui.OnboardingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- ========================================= -->
+        <!-- LOGIN                                     -->
+        <!-- ========================================= -->
+
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <!-- ========================================= -->
+        <!-- SOS                                       -->
+        <!-- ========================================= -->
+
+        <activity
+            android:name=".ui.alert.SosActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- ========================================= -->
+        <!-- LIVE TRACKING                             -->
+        <!-- ========================================= -->
+
+        <activity
+            android:name=".ui.tracking.LiveTrackingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- ========================================= -->
+        <!-- FAKE CALL                                 -->
+        <!-- ========================================= -->
+
+        <activity
+            android:name=".ui.FakeCallActivity"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:exported="false"/>
+
+        <!-- ========================================= -->
+        <!-- SURAKSHA AGENT CHAT                       -->
+        <!-- ========================================= -->
+
+        <activity
+            android:name=".ui.SurakshaAgentChatActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <!-- ========================================= -->
+        <!-- VOICE RECOGNITION                         -->
+        <!-- ========================================= -->
+
+        <activity
+            android:name=".ui.CodeWordSetupActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <!-- ========================================= -->
+        <!-- MONITORING SERVICE                        -->
+        <!-- ========================================= -->
+
+        <service
+            android:name=".service.MonitoringService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location|dataSync"/>
+
+
+        <!-- ========================================= -->
+        <!-- DOWNLOADABLE PDF                          -->
+        <!-- ========================================= -->
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+        <!-- ========================================= -->
+        <!-- AUTONOMOUS TRIGGER SERVICE                -->
+        <!-- ========================================= -->
+
+        <service
+            android:name=".agent.trigger.AutonomousTriggerService"
+            android:foregroundServiceType="microphone"
+            android:exported="false"/>
+
+        <!-- ========================================= -->
+        <!-- BOOT RECEIVER                             -->
+        <!-- ========================================= -->
+
+        <receiver
+            android:name=".service.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

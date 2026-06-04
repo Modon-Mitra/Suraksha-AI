@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ── Brand ── -->
+    <color name="brand_blue">#00D4FF</color>
+    <color name="brand_blue_dim">#1A2A4A</color>
+
+    <!-- ── Safety States ── -->
+    <color name="safe_green">#00E676</color>
+    <color name="safe_green_dim">#0A2A1A</color>
+    <color name="warning_yellow">#FFD600</color>
+    <color name="warning_yellow_dim">#2A2200</color>
+    <color name="danger_red">#FF1744</color>
+    <color name="danger_red_dim">#2A0A0A</color>
+
+    <!-- ── Background layers ── -->
+    <color name="bg_dark">#050D1A</color>
+    <color name="bg_card">#0D1B2E</color>
+    <color name="bg_card2">#0A1525</color>
+
+    <!-- ── Text ── -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8AAAC8</color>
+    <color name="text_hint">#3A5A7A</color>
+
+    <!-- ── SOS red ── -->
+    <color name="sos_red">#FF0033</color>
+    <color name="sos_red_dim">#3A0010</color>
+
+    <!-- ── Chat UI ── -->
+    <color name="chat_header_bg">#070F1E</color>
+    <color name="chat_input_bg">#0D1B2E</color>
+    <color name="chat_border">#1A2E44</color>
+    <color name="chat_hint">#3A5A7A</color>
+    <color name="chat_user_bubble">#003A5C</color>
+    <color name="chat_agent_bubble">#0D1B2E</color>
+
+    <!-- ── Misc ── -->
+    <color name="divider">#1A2E44</color>
+    <color name="icon_tint">#5A8AAA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+</resources>

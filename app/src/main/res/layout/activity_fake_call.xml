@@ -1,0 +1,63 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_call_gradient">
+    <!--  ════════════ TOP: caller info ════════════  -->
+    <TextView android:id="@+id/tvCallStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="72dp" android:text="Incoming call…" android:textColor="#AAB8C8" android:textSize="15sp" android:letterSpacing="0.02" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView android:id="@+id/tvCallerName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Mom" android:textColor="#FFFFFF" android:textSize="38sp" android:textStyle="bold" android:fontFamily="sans-serif-light" app:layout_constraintTop_toBottomOf="@id/tvCallStatus" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView android:id="@+id/tvTimer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="00:00" android:textColor="#AAB8C8" android:textSize="16sp" android:visibility="gone" app:layout_constraintTop_toBottomOf="@id/tvCallerName" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <!--  ════════════ CENTER: avatar ════════════  -->
+    <View android:id="@+id/glowBg" android:layout_width="220dp" android:layout_height="220dp" android:background="@drawable/bg_fake_call_glow" android:alpha="0.3" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.36"/>
+    <View android:id="@+id/pulseRing" android:layout_width="150dp" android:layout_height="150dp" android:background="@drawable/bg_fake_call_pulse" android:alpha="0.5" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.36"/>
+    <androidx.cardview.widget.CardView android:id="@+id/avatarCard" android:layout_width="130dp" android:layout_height="130dp" app:cardCornerRadius="65dp" app:cardElevation="0dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.36">
+        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_call_avatar"/>
+        <TextView android:id="@+id/tvAvatar" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="👤" android:textSize="56sp"/>
+    </androidx.cardview.widget.CardView>
+    <!--  ════════════ IN-CALL CONTROL GRID (shown after answering) ════════════  -->
+    <LinearLayout android:id="@+id/callControlsGrid" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="44dp" android:paddingStart="36dp" android:paddingEnd="36dp" android:visibility="gone" app:layout_constraintBottom_toTopOf="@id/btnHangup" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <!--  Row 1: Mute | Keypad | Speaker  -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="28dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:layout_width="62dp" android:layout_height="62dp" android:background="@drawable/bg_call_control" android:gravity="center" android:text="🎙" android:textSize="24sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Mute" android:textColor="#DDE6F0" android:textSize="12sp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:layout_width="62dp" android:layout_height="62dp" android:background="@drawable/bg_call_control" android:gravity="center" android:text="⌨" android:textSize="24sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Keypad" android:textColor="#DDE6F0" android:textSize="12sp"/>
+            </LinearLayout>
+            <!--  Speaker (FUNCTIONAL)  -->
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:id="@+id/btnSpeaker" android:layout_width="62dp" android:layout_height="62dp" android:background="@drawable/bg_call_control" android:gravity="center" android:text="🔈" android:textSize="24sp"/>
+                <TextView android:id="@+id/tvSpeakerLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Speaker" android:textColor="#DDE6F0" android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <!--  Row 2: Add call | Hold | Video  -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:layout_width="62dp" android:layout_height="62dp" android:background="@drawable/bg_call_control" android:gravity="center" android:text="➕" android:textSize="22sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Add call" android:textColor="#DDE6F0" android:textSize="12sp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:layout_width="62dp" android:layout_height="62dp" android:background="@drawable/bg_call_control" android:gravity="center" android:text="⏸" android:textSize="22sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Hold" android:textColor="#DDE6F0" android:textSize="12sp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:layout_width="62dp" android:layout_height="62dp" android:background="@drawable/bg_call_control" android:gravity="center" android:text="📹" android:textSize="22sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Video" android:textColor="#DDE6F0" android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <!--  hidden dummy for Java compatibility (icon is set on btnSpeaker directly)  -->
+    <TextView android:id="@+id/tvSpeakerIcon" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+    <!--  ════════════ BOTTOM: answer / decline (incoming) ════════════  -->
+    <LinearLayout android:id="@+id/btnDecline" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:layout_marginBottom="72dp" android:layout_marginStart="56dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent">
+        <TextView android:layout_width="72dp" android:layout_height="72dp" android:background="@drawable/bg_call_end" android:gravity="center" android:text="📞" android:rotation="135" android:textSize="30sp" android:elevation="6dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Decline" android:textColor="#AAB8C8" android:textSize="13sp"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/btnAnswer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:layout_marginBottom="72dp" android:layout_marginEnd="56dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <TextView android:layout_width="72dp" android:layout_height="72dp" android:background="@drawable/bg_call_answer" android:gravity="center" android:text="📞" android:textSize="30sp" android:elevation="6dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Accept" android:textColor="#AAB8C8" android:textSize="13sp"/>
+    </LinearLayout>
+    <!--  ════════════ BOTTOM: end call (after answering) ════════════  -->
+    <LinearLayout android:id="@+id/btnHangup" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:layout_marginBottom="56dp" android:visibility="gone" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <TextView android:layout_width="72dp" android:layout_height="72dp" android:background="@drawable/bg_call_end" android:gravity="center" android:text="📞" android:rotation="135" android:textSize="30sp" android:elevation="6dp"/>
+    </LinearLayout>
+    <TextView android:id="@+id/tvHangupLabel" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

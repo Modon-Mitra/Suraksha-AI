@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "464658369241",
+    "project_id": "surakshaai-943e2",
+    "storage_bucket": "surakshaai-943e2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464658369241:android:3ffe2e97145cd5adb80cc8",
+        "android_client_info": {
+          "package_name": "com.suraksha.ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNJ5k9pvOHP_sahatdtpk1rgF62SgL1kE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

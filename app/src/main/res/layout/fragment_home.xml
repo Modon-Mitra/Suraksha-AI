@@ -1,0 +1,186 @@
+<!--
+    Root is a FrameLayout so the Suraksha FAB can float in the
+    bottom-right corner on top of the scrollable content.
+  -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/bg_dark">
+    <!--   =======================================================   -->
+    <!--   SCROLLABLE CONTENT (unchanged from original)              -->
+    <!--   =======================================================   -->
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:paddingBottom="88dp" android:clipToPadding="false">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+            <!--    =========================    -->
+            <!--    TOP BAR                      -->
+            <!--    =========================    -->
+            <!--
+   ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  fragment_home.xml  — TOP BAR  (replace the existing top-bar block)     ║
+   ╚══════════════════════════════════════════════════════════════════════════╝
+
+   Find this in fragment_home.xml:
+
+       <LinearLayout android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:gravity="center_vertical"
+           android:layout_marginBottom="16dp">
+           <ImageView android:layout_width="28dp" …/>
+           <TextView  android:layout_width="0dp"  …/>
+           <TextView  android:id="@+id/tv_connected_badge" …/>
+       </LinearLayout>
+
+   Replace it with the block below.
+   The shield ImageView now has  android:id="@+id/iv_shield_logo"
+   so HomeFragment can attach a click listener that calls
+   ((MainActivity) requireActivity()).toggleNavPanel()
+   with a brief scale-pulse animation.
+ -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <!--
+                    SHIELD LOGO — tap to open/close the left nav panel.
+                    The id  iv_shield_logo  is wired up in HomeFragment.onViewCreated().
+                -->
+                <ImageView
+                    android:id="@+id/iv_shield_logo"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_shield"
+                    android:padding="2dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="Open navigation menu" />
+
+                <!-- App name label — also tappable (delegates to shield click) -->
+                <TextView
+                    android:id="@+id/tv_app_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/brand_blue"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    />
+
+                <!-- Connected badge (unchanged) -->
+                <TextView
+                    android:id="@+id/tv_connected_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_safe"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="● Connected"
+                    android:textColor="@color/safe_green"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <!--    =========================    -->
+            <!--    MONITORING STATUS CARD       -->
+            <!--    =========================    -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp" app:cardElevation="4dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:id="@+id/tv_monitoring_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Safety Monitoring" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="15sp"/>
+                        <TextView android:id="@+id/tv_monitoring_sub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tap to toggle" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <Button android:id="@+id/btn_toggle_monitoring" android:layout_width="120dp" android:layout_height="44dp" android:text="● ACTIVE" android:textAllCaps="false" android:textStyle="bold" android:textSize="13sp" android:textColor="@color/bg_dark" android:backgroundTint="@color/safe_green" android:stateListAnimator="@null" android:elevation="4dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--   HUMAN ACTIVITY RECOGNITION CARD   -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardActivityStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp" app:cardElevation="4dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp">
+                    <TextView android:id="@+id/tvActivityEmoji" android:layout_width="48dp" android:layout_height="48dp" android:gravity="center" android:textSize="28sp" android:text="🚶"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:id="@+id/tvActivityLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Detecting activity..." android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="16sp"/>
+                        <TextView android:id="@+id/tvActivityConfidence" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Confidence: --" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                        <TextView android:id="@+id/tvFallStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🛡️ Fall detection: Active" android:textColor="@color/safe_green" android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--    =========================    -->
+            <!--    MAIN STATUS CARD (circle)    -->
+            <!--    =========================    -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="20dp" app:cardElevation="8dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="24dp">
+                    <!--    Circle ring    -->
+                    <com.google.android.material.card.MaterialCardView android:id="@+id/status_ring" android:layout_width="220dp" android:layout_height="220dp" app:cardBackgroundColor="@color/bg_card2" app:cardCornerRadius="110dp" app:cardElevation="0dp" app:strokeColor="@color/safe_green" app:strokeWidth="3dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="♥" android:textColor="@color/danger_red" android:textSize="24sp"/>
+                            <TextView android:id="@+id/tv_heart_rate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/text_primary" android:textSize="56sp" android:textStyle="bold"/>
+                            <TextView android:id="@+id/tv_bpm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BPM" android:textColor="@color/text_secondary" android:textSize="13sp"/>
+                            <!--    Source: "via Watch", "via Camera", "Phone sensor"    -->
+                            <TextView android:id="@+id/tv_hr_source" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Phone sensor" android:textColor="@color/text_secondary" android:textSize="10sp" android:layout_marginTop="4dp"/>
+                            <!--    Status badge inside circle    -->
+                            <androidx.cardview.widget.CardView android:id="@+id/card_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/safe_green_dim" app:cardElevation="0dp">
+                                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="10dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="✓" android:textColor="@color/safe_green" android:textSize="14sp"/>
+                                    <TextView android:id="@+id/tv_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4dp" android:text="SAFE" android:textColor="@color/safe_green" android:textSize="16sp" android:textStyle="bold"/>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--    =========================    -->
+            <!--    BLE + CAMERA BUTTONS         -->
+            <!--    (outside circle, below)      -->
+            <!--    =========================    -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp" app:cardElevation="4dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                    <!--    BLE status label    -->
+                    <TextView android:id="@+id/tv_ble_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○ No watch connected" android:textSize="12sp" android:textColor="@color/text_secondary" android:layout_marginBottom="10dp"/>
+                    <!--    Connect smartwatch via BLE    -->
+                    <Button android:id="@+id/btn_connect_watch" android:layout_width="match_parent" android:layout_height="44dp" android:text="🔗 Connect Watch (BLE)" android:textAllCaps="false" android:textSize="14sp" android:textColor="#FFFFFF" android:backgroundTint="@color/brand_blue" android:stateListAnimator="@null" android:layout_marginBottom="8dp"/>
+                    <!--    Camera PPG measurement    -->
+                    <Button android:id="@+id/btn_camera_hr" android:layout_width="match_parent" android:layout_height="44dp" android:text="📷 Measure via Camera" android:textAllCaps="false" android:textSize="14sp" android:textColor="#FFFFFF" android:backgroundTint="@color/bg_card2" android:stateListAnimator="@null"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--    =========================    -->
+            <!--    SENSOR ROW                   -->
+            <!--    =========================    -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                <!--    Heart Rate    -->
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="8dp" app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="14dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Heart Rate" android:textColor="@color/text_secondary"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:id="@+id/tv_hr_stat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textSize="28sp" android:textStyle="bold" android:textColor="@color/text_primary"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4dp" android:text="bpm" android:textColor="@color/text_secondary"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <!--    Stress Level (from HRV)    -->
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="14dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stress Level" android:textColor="@color/text_secondary"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:id="@+id/tv_stress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textSize="22sp" android:textStyle="bold" android:textColor="@color/text_primary"/>
+                        </LinearLayout>
+                        <TextView android:id="@+id/tv_hrv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HRV: -- ms" android:textColor="@color/text_secondary" android:textSize="10sp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <!--    =========================    -->
+            <!--    SOS BUTTON                   -->
+            <!--    =========================    -->
+            <Button android:id="@+id/btn_sos" android:layout_width="100dp" android:layout_height="100dp" android:layout_gravity="center" android:text="SOS" android:textSize="20sp" android:textStyle="bold" android:textColor="@android:color/white" android:background="@drawable/bg_sos_button"/>
+        </LinearLayout>
+    </ScrollView>
+    <!--   =======================================================   -->
+    <!--   SURAKSHA FAB — floats bottom-right above all content      -->
+    <!--   =======================================================   -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton android:id="@+id/fab_suraksha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom|end" android:layout_margin="20dp" android:text="Suraksha" android:textColor="@color/bg_dark" android:textStyle="bold" android:textSize="14sp" app:icon="@drawable/ic_shield" app:iconTint="@color/bg_dark" app:backgroundTint="@color/brand_blue" app:elevation="8dp" app:rippleColor="@color/brand_blue_dim"/>
+</FrameLayout>

@@ -1,0 +1,50 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#0F1923" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="28dp">
+        <!--  ===================== HEADER =====================  -->
+        <LinearLayout android:id="@+id/layoutHeader" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="40dp" android:layout_marginBottom="32dp" android:gravity="center">
+            <TextView android:id="@+id/tvShield" android:layout_width="80dp" android:layout_height="80dp" android:text="🛡" android:textSize="48sp" android:gravity="center" android:layout_marginBottom="16dp"/>
+            <TextView android:id="@+id/tvTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Create Account" android:textSize="28sp" android:textStyle="bold" android:textColor="#FFFFFF" android:fontFamily="sans-serif-medium" android:layout_marginBottom="8dp"/>
+            <TextView android:id="@+id/tvSubtitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sign up to stay safe with Suraksha AI" android:textSize="14sp" android:textColor="#8899AA" android:gravity="center"/>
+        </LinearLayout>
+        <!--  ===================== CARD =====================  -->
+        <androidx.cardview.widget.CardView android:id="@+id/loginCard" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="20dp" app:cardBackgroundColor="#1A2535" app:cardElevation="0dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+                <!--  ===== Login / Signup toggle =====  -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:background="@drawable/bg_toggle" android:layout_marginBottom="24dp">
+                    <Button android:id="@+id/btnSignup" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="Sign Up" android:textSize="14sp" android:textColor="#FFFFFF" android:background="@drawable/bg_toggle_selected" android:stateListAnimator="@null"/>
+                    <Button android:id="@+id/btnLogin" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="Login" android:textSize="14sp" android:textColor="#FFFFFF" android:background="@android:color/transparent" android:stateListAnimator="@null"/>
+                </LinearLayout>
+                <!--  ===== NAME (signup only) =====  -->
+                <LinearLayout android:id="@+id/layoutName" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="16dp" android:visibility="visible">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Your Name" android:textSize="12sp" android:textColor="#8899AA" android:layout_marginBottom="6dp"/>
+                    <EditText android:id="@+id/etName" android:layout_width="match_parent" android:layout_height="52dp" android:hint="Full name" android:textColorHint="#445566" android:textColor="#FFFFFF" android:textSize="15sp" android:paddingStart="16dp" android:paddingEnd="16dp" android:background="@drawable/bg_input" android:inputType="textPersonName" android:imeOptions="actionNext"/>
+                </LinearLayout>
+                <!--  ===== PHONE (for tracking — signup only) =====  -->
+                <LinearLayout android:id="@+id/layoutPhoneForEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="16dp" android:visibility="visible">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Phone Number (for live tracking)" android:textSize="12sp" android:textColor="#8899AA" android:layout_marginBottom="6dp"/>
+                    <EditText android:id="@+id/etPhoneForEmail" android:layout_width="match_parent" android:layout_height="52dp" android:hint="+91 XXXXX XXXXX" android:textColorHint="#445566" android:textColor="#FFFFFF" android:textSize="15sp" android:paddingStart="16dp" android:paddingEnd="16dp" android:background="@drawable/bg_input" android:inputType="phone" android:imeOptions="actionNext"/>
+                </LinearLayout>
+                <!--  ===== EMAIL =====  -->
+                <LinearLayout android:id="@+id/layoutEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="16dp" android:visibility="visible">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email Address" android:textSize="12sp" android:textColor="#8899AA" android:layout_marginBottom="6dp"/>
+                    <EditText android:id="@+id/etEmail" android:layout_width="match_parent" android:layout_height="52dp" android:hint="you@example.com" android:textColorHint="#445566" android:textColor="#FFFFFF" android:textSize="15sp" android:paddingStart="16dp" android:paddingEnd="16dp" android:background="@drawable/bg_input" android:inputType="textEmailAddress" android:imeOptions="actionNext"/>
+                </LinearLayout>
+                <!--  ===== PASSWORD with eye toggle =====  -->
+                <LinearLayout android:id="@+id/layoutPassword" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="8dp" android:visibility="visible">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Password" android:textSize="12sp" android:textColor="#8899AA" android:layout_marginBottom="6dp"/>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="52dp">
+                        <EditText android:id="@+id/etPassword" android:layout_width="match_parent" android:layout_height="52dp" android:hint="Min 6 characters" android:textColorHint="#445566" android:textColor="#FFFFFF" android:textSize="15sp" android:paddingStart="16dp" android:paddingEnd="52dp" android:background="@drawable/bg_input" android:inputType="textPassword" android:imeOptions="actionDone"/>
+                        <ImageButton android:id="@+id/btnTogglePassword" android:layout_width="48dp" android:layout_height="48dp" android:layout_gravity="end|center_vertical" android:layout_marginEnd="4dp" android:src="@android:drawable/ic_menu_view" android:background="@android:color/transparent" android:tint="#8899AA" android:contentDescription="Toggle password visibility"/>
+                    </FrameLayout>
+                </LinearLayout>
+                <!--  ===== FORGOT PASSWORD =====  -->
+                <TextView android:id="@+id/tvForgotPassword" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Forgot Password?" android:textSize="13sp" android:textColor="#FF6B6B" android:layout_gravity="end" android:layout_marginBottom="20dp" android:paddingTop="4dp" android:paddingBottom="4dp" android:visibility="gone"/>
+                <!--  ===== PROGRESS BAR =====  -->
+                <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:indeterminateTint="#FF6B6B" android:visibility="gone" android:layout_marginBottom="12dp"/>
+                <!--  ===== MAIN ACTION BUTTON =====  -->
+                <Button android:id="@+id/btnAction" android:layout_width="match_parent" android:layout_height="56dp" android:text="Sign Up" android:textSize="16sp" android:textStyle="bold" android:textColor="#FFFFFF" android:backgroundTint="#FF6B6B" android:stateListAnimator="@null"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <View android:layout_width="match_parent" android:layout_height="32dp"/>
+    </LinearLayout>
+</ScrollView>
