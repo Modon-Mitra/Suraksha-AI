@@ -85,7 +85,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD979ekt1ceDf2HIg9k39JkGx12bKPWZ90"/>
+            android:value="AIzaSyXXXXXXXXXXXXXXXXXXXX"/>
 
         <!-- ========================================= -->
         <!-- SPLASH                                    -->
